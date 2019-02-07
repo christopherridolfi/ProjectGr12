@@ -9,11 +9,12 @@ countereasy = []
 countermed = []
 counterhard = []
 counterhardr=[]
+
 while f == 0:
     intro = input("What Level Do You Want to Play (1 = easy, 2 = medium, 3 = hard)")
     if intro == "1":
         file = open("easy.txt","r")
-        for x in range(1,7):
+        for x in range(1,8):
             print(file.readline().replace(" ", "").replace("", " ").strip())
         print("welcome to the first level, There are 5 words")
         while j == 0:
@@ -32,7 +33,7 @@ while f == 0:
 
     elif intro == "2":
         file2 = open("medium.txt","r")
-        for b in range(1,9):
+        for b in range(1,9):#random rand the readline()
             print(file2.readline().replace(" ", "").replace("", " ").strip())
         print("welcome to the second level, There are 10 words")
         while n == 0:
@@ -44,7 +45,7 @@ while f == 0:
                     print("congratultions you have gotten a word.")
                     countermed.append(word2)
                     print(str(countermed))
-            if len(countereasy) == 10:
+            if len(countermed) == 10:
                 print("You have completed this level Congrats!!")
                 break
     elif intro == "3":
