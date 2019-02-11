@@ -85,7 +85,7 @@ while f == 0:
                     print(str(countereasy))#Shows the player what words they have guessed correctly.
             if len(countereasy) == 5:#makes sure once you guess all the words the level ends and are able to play new level.
                 complete("1")#This activates the complete() function with the parameter j being "1"
-                break
+                break#This breaks the current while loop and brings you back to the menu.
 
 
     elif intro == "2" and "2" not in nomore2:#Makes sure that you can't repeat level once you have beaten it.
@@ -99,7 +99,7 @@ while f == 0:
                 whilelist2.append("hi")
                 if len(whilelist2) == 9:
                     break
-            """This is repeated code from the first level but updated for the new perameters of the medium grid"""
+            """This is repeated code from the first level but updated for the new peramters of the medium grid."""
 
         print("welcome to the second level, There are 10 words")
         while n == 0:
