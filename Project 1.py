@@ -31,13 +31,15 @@ import random
 #This is the import for random as I use the random.randint() function to randomize the order of my word search lines.
 wordlisteasy = ["chris","fox","batman","git","game","rob"]
 wordlistmed = ["fire","llik","math","gwood","boring","go","open","ten","word","myg","ekab"]
+"""#This is used to check if the word variable are text file and in this list."""
 wordlisthard = ["eikooc","nohtyp","buhtig","clock","canada","drib","swim","glass","brick","mrahcyp","retaw","think","screen","list","tes"]
 """These three lists are used to check if the word inputed are the same as in the text file."""
-countereasy = []
-countermed = []
-counterhard = []
+countereasy = []#Is used later to makes sure you can't repeat a word in the easy level
+countermed = []#Is used later to make sure you can't repeat a word in the medium level.
+counterhard = []#Is used later to make sure you can't repeat a word in the hard level.
 """These lists are used so you can't guess the same word twice.
-Also it is used to see if you guessed all the word in the list"""
+Also it is used to see if you guessed all the word in the list. I did this so there is no way to cheat the game and you
+can't get to the required len number to end the level without guessing all the word."""
 counterhardr=[] #This has the same use as the counter lists above but for the reverse words.
 randomprotect = []
 randomprotect3 = []
@@ -48,7 +50,7 @@ whilelist2 =[]
 whilelist3 = []
 """The whilelists are used so after all the lines are printed
 the grid stops printing"""
-countermedr = []
+countermedr = []#this is the counter for words being guessed twice but for the reverse words.
 nomore2 = []#Is used so you can't play the same level twice.
 
 Ascii(0.2)
@@ -75,9 +77,9 @@ while f == 0:
             time.sleep(0.3)
             word = input("\nWhat Word Do you Wanna Guess ").lower()#makes sure your input is made lowercase for the variable.
             text_file1 = open("easy.txt","r") #reads the text file.
-            lines1 = text_file1.readlines()#This reads all the lines in text_file1 variable.
+            lines1 = text_file1.readlines()#This reads the lines in text_file1 variable.
             for line1 in lines1:
-                if word in line1 and word in wordlisteasy and word not in countereasy:#Checks if guessed word is in list.
+                if word in line1 and word in wordlisteasy and word not in countereasy:#Checks if guessed word is in list. and not in countereasy list.
                     print("congratultions you have gotten a word.")
                     countereasy.append(word)#adds input to counter list so you can't guess again.
                     print(str(countereasy))#Shows the player what words they have guessed correctly.
@@ -92,7 +94,7 @@ while f == 0:
         while wk == 0:
             randomthing = random.randint(0, 8)#Same code as before but for a different level and therefor more lines.
             if randomthing not in randomprotect:
-                print(liness2[randomthing].replace(" ", "").replace("", " ").strip())
+                print(liness2[randomthing].replace(" ", "").replace("", " ").strip())#the.strip removes whitespace from the print statement
                 randomprotect.append(randomthing)
                 whilelist2.append("hi")
                 if len(whilelist2) == 9:
@@ -115,7 +117,7 @@ while f == 0:
             """The ::-1 is used in if statment so that the user can guess words that are reversed in the grid."""
             if len(countermed) == 10:#This line of code activates the if statement if their are ten words in the list.
                 complete("2")#This activates the complete() function with the parameter j being "2"
-                break
+                break#this breaks the while loop it is currently in. This basically brings you back to the menu.
 
 
     elif intro == "3" and "3" not in nomore2:
@@ -134,17 +136,17 @@ while f == 0:
             time.sleep(0.3)
             word3 = input("\nWhat Word Do you Wanna Guess ").lower()#Space at end of dialouge make input more visualy appealing.
             text_file3 = open("hard.txt", "r")
-            lines3 = text_file3.readlines()
+            lines3 = text_file3.readlines()#reads the lines of the text file.
             for line3 in lines3:
                 if word3 in line3 and word3 in wordlisthard and word3 not in counterhard or word3[::-1] in wordlisthard and word3 not in counterhard:
                     print("congratultions you have gotten a word.")
                     counterhard.append(word3)
                     counterhardr.append(word3[::-1])#the ::-1 reverses word3.
                     print(str(counterhard))
-            if len(counterhard) == 15:
+            if len(counterhard) == 15:#activates the if statements if there are 15 words in the counterhard list.
                 complete("3")#This activates the complete() function with the parameter j being "3"
                 break
-    if len(nomore2) == 3:
+    if len(nomore2) == 3:#activates the if statements if the nomore2 list has 3 words in it.
         time.sleep(0.5)
         exit("Congratulations You Having Finished All the Levels.")
 
